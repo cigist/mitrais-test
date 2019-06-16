@@ -1,0 +1,37 @@
+<div class="center-screen" ng-controller="regCtrl">
+    <h2>Registration <span style="color:Red;float: right;" ng-show="regFailed">{{message}}</span></h2>
+    <form name="personForm" ng-submit="doRegister()" >
+        <fieldset style="border: 0px " ng-disabled="formDis">
+        <input type="text" ng-model="mobile" name="mobile" ng-pattern="/^(^\+62\s?|^0)(\d{3,4}-?){2}\d{3,4}$/g"  placeholder="Mobile number" required>
+        <span style="color:Red" ng-show="personForm.mobile.$dirty&&personForm.mobile.$error.pattern">Please Enter Valid Indonesia Phone Number</span>
+        <input type="text" name="lastname" ng-model="firstname" placeholder="Firstname" required>
+        <input type="text" name="lastname" ng-model="lastname"  placeholder="Lastname" required>
+        <label>Date Of Birth</label>
+        <div ng-init="init()">
+            <select class="my-select" aria-placeholder="Month" ng-model="mth">
+                <option value="" disabled selected>Month</option>
+                <option  ng-repeat="month in months" value="{{month}}">{{month}}</option>
+            </select>
+            <select class="my-select" ng-model="dte">
+                <option value="" disabled selected>Date</option>
+                <option  ng-repeat="date in dates" value="{{date}}">{{date}}</option>
+            </select>
+            <select class="my-select" ng-model="yrs">
+                <option value="" disabled selected>Year</option>
+                <option  ng-repeat="year in years" value="{{year}}">{{year}}</option>
+            </select>
+        </div>
+        <div class="block">
+            <label><input type="radio" name="gender" ng-model="gender" value="M"> Male</label>
+            <label><input type="radio" name="gender" value="F"> Female</label>
+        </div>
+        <input type="text" name="email" ng-model="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="Email" required>
+        <span style="color:Red" ng-show="personForm.email.$dirty&&personForm.email.$error.pattern">Please Enter Valid Email</span>
+        <button class="my-button" type="submit" ng-show="!showLogin">Register</button>
+    </fieldset>
+        <a ng-show="!showLogin" ng-href="#!login">Login</a>
+    </form>
+    <div class="my-footer" ng-show="!showLogin">
+        
+    </div>
+</div>
