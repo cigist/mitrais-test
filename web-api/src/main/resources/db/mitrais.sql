@@ -2,7 +2,7 @@ CREATE DATABASE mitrais;
 
 CREATE TABLE `tbl_register` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone_number` varchar(13) DEFAULT NULL,
+  `phone_number` varchar(13) NOT NULL,
   `firstname` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
   `dob` date DEFAULT NULL,

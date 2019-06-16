@@ -36,12 +36,14 @@ app.controller('regCtrl', function ($scope, moment,$http,$window) {
       email:$scope.email
     }
     $http.post(url+"register/", JSON.stringify(data)).then(function (response) {
+      $scope.message =null;
       // This function handles success
         if(response.data.code ==200){
           if(response.data.status=='OK'){
-            $scope.regFailed=false;
+            $scope.regFailed=true;
             $scope.formDis = true;
             $scope.showLogin=true;
+            $scope.message = response.data.message;
           }else{
             $scope.regFailed=true;
             $scope.formDis = false;

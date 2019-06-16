@@ -29,18 +29,19 @@ public class RegisterController {
         if (registerRepository.findByPhone(register.getPhoneNumber())) {
             rr.setCode("200");
             rr.setStatus("error");
-            rr.setMessage("Phone number already");
+            rr.setMessage("Phone number already!");
             return rr;
         } else {
             try {
                 registerRepository.save(register);
                 rr.setCode("200");
                 rr.setStatus("OK");
+                rr.setMessage("Register successfully");
                 return rr;
             }catch (Exception ex){
                 rr.setCode("200");
                 rr.setStatus("error");
-                rr.setMessage("Error proccess insert");
+                rr.setMessage("Register Invalid!");
                 return rr;
             }
         }
