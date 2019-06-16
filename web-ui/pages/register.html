@@ -27,11 +27,10 @@
         </div>
         <input type="text" name="email" ng-model="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="Email" required>
         <span style="color:Red" ng-show="personForm.email.$dirty&&personForm.email.$error.pattern">Please Enter Valid Email</span>
-        <button class="my-button" type="submit" ng-show="!showLogin">Register</button>
+        <button class="my-button" type="submit" ng-disabled="showLogin">Register</button>
     </fieldset>
-        <a ng-show="!showLogin" ng-href="#!login">Login</a>
     </form>
-    <div class="my-footer" ng-show="!showLogin">
-        
+    <div class="my-footer" ng-disabled="showLogin">
+        <a ng-show="showLogin" ng-href="#!login">Login</a>
     </div>
 </div>
